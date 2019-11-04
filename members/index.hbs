@@ -1,0 +1,76 @@
+{{!< ../default}}
+
+<header class="site-header">
+    {{> site-header}}
+</header>
+<main id="site-main" class="site-main site-signin outer">
+    <div class="inner">
+
+    {{#if @member}}
+
+        {{!-- Logged in: Redirect home --}}
+        <script>window.location = '/';</script>
+
+    {{else}}
+        <div class="container">
+            <header class="rdv-header">
+                <h1>Premium Membership</h1>
+                <span>Gain access to more posts and resources around remote work, management and psychology. Members get access to a private newsletter and new content every week!</span>
+            </header>
+
+            <div class="checkout-form">
+                <div class="checkout-box">
+                    <div class="checkout-plan">
+                        <header class="checkout-plan-header">
+                            <h3>Monthly</h3>
+                            <span>$</span><strong>{{@price.monthly}}</strong> / month
+                        </header>
+                        <div class="checkout-plan-content">
+                            <ul>
+                                <li><span>👨🏻‍🚀</span> <strong>Limited early adopter pricing</strong></li>
+                                <li><span>💌</span> Weekly email newsletter</li>
+                                <li><span>🔐</span> Full access to private stories</li>
+                                <li><span>🎙</span> Members-only Q&amp;A</li>
+                                <li><span>✊🏼</span> Support indie publishing</li>
+                                <li><span>🚫</span> No advertising</li>
+                                <li><span>🕹</span> No clickbait</li>
+                                <li><span>💩</span> No bullshit</li>
+                                <li>-</li>
+                                <li>-</li>
+                                </ul>
+                            <a class="button primary fit" href="javascript:void(0)" data-members-plan="Monthly">Choose this plan</a>
+                        </div>
+                    </div>
+                    <div class="checkout-plan">
+                        <header class="checkout-plan-header">
+                            <h3>Yearly</h3>
+                            <span>$</span><strong>{{@price.yearly}}</strong> / year
+                        </header>
+                        <div class="checkout-plan-content">
+                            <ul>
+                                <li><span>👨🏻‍🚀</span> <strong>Limited early adopter pricing</strong></li>
+                                <li><span>💌</span> Weekly email newsletter</li>
+                                <li><span>🔐</span> Full access to private stories</li>
+                                <li><span>🎙</span> Members-only Q&amp;A</li>
+                                <li><span>✊🏼</span> Support indie publishing</li>
+                                <li><span>🚫</span> No advertising</li>
+                                <li><span>🕹</span> No clickbait</li>
+                                <li><span>💩</span> No bullshit</li>
+                                <li><span>⚡️</span> <strong>1 quick payment instead of 12</strong></li>
+                                <li><span>💸</span> <strong>Extra 60% discount</strong></li>
+                            </ul>
+                            <a class="button primary fit" href="javascript:void(0)" data-members-plan="Yearly">Choose this plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-plan-notes">
+                <strong>Special note:</strong> This is a beta, there are only a few members-only posts right now, but I'm constantly going to be adding more over the next few weeks to get everything up to speed. Just to set expectations.
+            </div>
+        </div>
+       
+    {{/if}}
+
+    </div>
+</main>

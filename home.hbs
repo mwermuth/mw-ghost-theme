@@ -1,0 +1,144 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<header class="site-home-header">
+    {{> header-background background=@site.cover_image}} {{!--Special header-image.hbs partial to generate the background image--}}
+        <div class="inner">
+            {{> "site-nav"}}
+            <div class="site-header-content">
+                <img class="site-header-content-image author-profile-image" src="{{asset 'images/marcus.jpg'}}" sizes="(max-width: 1000px) 400px, 700px" />
+                <div class="site-header-content-text">
+                    <h1 class="site-title">
+                        {{#if @site.logo}}
+                            <img class="site-logo" src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" />
+                        {{else}}
+                            {{@site.title}}
+                        {{/if}}
+                    </h1>
+                    <h2 class="site-description">{{@site.description}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+    <div class="inner intro">
+        <div class="introbox">
+            <h2 class="introbox-title"><u>An independent publication</u> about remote work, leadership and psychology.</h2>
+            <p class="introbox-excerpt">In a world where almost everyone works virtual in one way or the other, it is important to focus on building great relationships and look <strong>beyond the avatars</strong>. That means to learn more about the humans we work with, manage and lead. 
+                <br>
+                <br>
+                The topic is ever evolving, and progressing. If you are interested and what to hear more, join in and I'll keep on writing.
+                <br>
+                <br>
+                <a href="/about" class="button"><b>A little more about me</b></a>
+            </p>
+        </div>
+    </div>
+    <div class="signupbox-wrapper">
+        <div class="container">
+            <div class="signupbox">
+                <h2 class="signupbox-title">Join me in this journey</h2>
+                <div class="signupbox-grid">
+                    <div class="signupbox-grid-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>laptop-smiley-1</title><path class="a" d="M8.249,12.024a5.568,5.568,0,0,0,7.5,0"/><line class="a" x1="9.749" y1="7.5" x2="9.749" y2="9"/><line class="a" x1="14.249" y1="7.5" x2="14.249" y2="9"/><path class="a" d="M3,13.5V5.25a1.5,1.5,0,0,1,1.5-1.5h15A1.5,1.5,0,0,1,21,5.25V13.5"/><path class="a" d="M.749,16.5A3.75,3.75,0,0,0,4.5,20.25h15a3.75,3.75,0,0,0,3.75-3.75Z"/></svg>
+                        <h4>Exclusive content</h4>
+                        <p>An uncensored, ongoing story about a decade of living, working and building a business while travelling the world.</p>
+                    </div>
+                    <div class="signupbox-grid-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>send-email-2</title><path class="a" d="M2.758,15.629a1.664,1.664,0,0,1-.882-3.075L20.359,1A1.663,1.663,0,0,1,22.875,2.72L19.281,21.893a1.664,1.664,0,0,1-2.966.691L11.1,15.629Z"/><path class="a" d="M11.1,15.629H8.6V20.8a1.663,1.663,0,0,0,2.6,1.374l3.178-2.166Z"/><line class="a" x1="11.098" y1="15.629" x2="22.178" y2="1.039"/></svg>
+                        <h4>Premium Newsletter</h4>
+                        <p>A curated reading list highlighting the most interesting stories in the world of remote-work and travel.</p>
+                    </div>
+                    <div class="signupbox-grid-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>mood-happy</title><path class="a" d="M12.749.75A10.485,10.485,0,0,0,3.832,16.775L.749,23.25l6.475-3.083A10.5,10.5,0,1,0,12.749.75Z"/><path class="a" d="M15.749,13.5a3,3,0,0,1-6,0Z"/><path d="M8.124,8.875a1,1,0,1,0,1,1,1,1,0,0,0-1-1Z"/><path d="M17.124,8.875a1,1,0,1,0,1,1,1,1,0,0,0-1-1Z"/></svg>
+                        <h4>Ask me anything</h4>
+                        <p>Subscribers run the show and determine what topics get covered next. Questions &amp; requests welcome.</p>
+                    </div>
+                </div>
+                <div class="signupbox-cta">
+                    <a class="button primary" href="/membership/" data-members-signin="">Sign up now for <span>$</span><strong>{{@price.monthly}}</strong> / month</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inner recent-posts">
+        <h2 class="recent-posts-title">Recent Posts</h2>
+        <div class="post-feed">
+            {{#get "posts" include="tags,authors" limit="3"}}
+                {{#foreach posts}}
+
+                    {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                    {{> "post-card"}}
+
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+</main>
+
+{{> site-header}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+
+    // NOTE: Scroll performance is poor in Safari
+    // - this appears to be due to the events firing much more slowly in Safari.
+    //   Dropping the scroll event and using only a raf loop results in smoother
+    //   scrolling but continuous processing even when not scrolling
+    $(document).ready(function () {
+
+        console.log("there must be a way to debug");
+
+        var nav = document.querySelector('.site-nav-main .site-nav');
+        var feed = document.querySelector('.introbox');
+
+        var lastScrollY = window.scrollY;
+        var lastWindowHeight = window.innerHeight;
+        var lastDocumentHeight = $(document).height();
+        var ticking = false;
+
+        function onScroll() {
+            lastScrollY = window.scrollY;
+            requestTick();
+        }
+
+        function onResize() {
+            lastWindowHeight = window.innerHeight;
+            lastDocumentHeight = $(document).height();
+            requestTick();
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(update);
+            }
+            ticking = true;
+        }
+
+        function update() {
+            var trigger = feed.getBoundingClientRect().top + window.scrollY;
+            var progressMax = lastDocumentHeight - lastWindowHeight;
+
+            // show/hide nav
+            if (lastScrollY >= trigger - 20) {
+                nav.classList.add('fixed-nav-active');
+            } else {
+                nav.classList.remove('fixed-nav-active');
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize, false);
+
+        update();
+
+    });
+</script>
+{{/contentFor}}
